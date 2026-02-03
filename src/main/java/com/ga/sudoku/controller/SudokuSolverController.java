@@ -18,9 +18,26 @@ public class SudokuSolverController {
     public Sudoku getGame(@PathVariable("gameName") String gameName){
         System.out.println("Controller calling getGame==>");
         gameName = gameName.concat(".csv");
+        String path = SudokuCsvIO.rootPath+gameName;
+        System.out.println(path);
         try{
             return new Sudoku(SudokuCsvIO.readSquareGrid(
-                    Path.of(SudokuCsvIO.rootPath+gameName)));
+                    Path.of(path)));
+        }catch (IOException e){
+            return null;
+            // handle invalid game name
+        }
+    }
+
+    @GetMapping("/{gameName}/display")
+    public String displayGame(@PathVariable("gameName") String gameName){
+        System.out.println("Controller calling displayGame==>");
+        gameName = gameName.concat(".csv");
+        String path = SudokuCsvIO.rootPath+gameName;
+        System.out.println(path);
+        try{
+            return new Sudoku(SudokuCsvIO.readSquareGrid(
+                    Path.of(path))).toString();
         }catch (IOException e){
             return null;
             // handle invalid game name
@@ -29,9 +46,8 @@ public class SudokuSolverController {
 
     @GetMapping("/{gameName}/solve")
     public Sudoku getSolution(@PathVariable("gameName") String gameName){
-        System.out.println("Controller calling getGame==>");
+        System.out.println("Controller calling getSolution==>");
         gameName = gameName.concat(".csv");
-
         SudokuSolver solver = new SudokuSolver();
         try{
             Sudoku sudoku = new Sudoku(SudokuCsvIO.readSquareGrid(
