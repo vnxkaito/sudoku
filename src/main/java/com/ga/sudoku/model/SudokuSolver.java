@@ -2,7 +2,7 @@ package com.ga.sudoku.model;
 
 import java.util.ArrayList;
 
-public class SudokuSolver(){
+public class SudokuSolver{
     public Sudoku solveSudoku(Sudoku sudoku){
         Sudoku solvedSudoku = sudoku;
         int[][] game = solvedSudoku.getGame();
