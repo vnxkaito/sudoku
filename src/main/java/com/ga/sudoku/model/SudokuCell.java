@@ -14,6 +14,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 public class SudokuCell {
+    @Id
+    private int id;
 
     @Column
     private int x;

@@ -12,6 +12,7 @@ public class SudokuSolver{
 
         return solvedSudoku;
     }
+
     private ArrayList<ArrayList<ArrayList<Integer>>> getPossibleValues(int[][] game){
         ArrayList<ArrayList<ArrayList<Integer>>> possibleValues = new ArrayList<>();
         for(int i = 0; i < game.length; i++){
