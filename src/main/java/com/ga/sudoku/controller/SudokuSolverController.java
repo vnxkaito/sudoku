@@ -45,8 +45,9 @@ public class SudokuSolverController {
     }
 
     @GetMapping("/{gameName}/solve")
-    public Sudoku getSolution(@PathVariable("gameName") String gameName){
+    public String getSolution(@PathVariable("gameName") String gameName){
         System.out.println("Controller calling getSolution==>");
+        String solvedGameName = gameName.concat("_solved.csv");
         gameName = gameName.concat(".csv");
         SudokuSolver solver = new SudokuSolver();
         try{
@@ -56,10 +57,10 @@ public class SudokuSolverController {
             Sudoku solvedSudoku = solver.solveSudoku(sudoku);
 
             SudokuCsvIO.saveSquareGrid(
-                    Path.of(SudokuCsvIO.rootPath+gameName),
+                    Path.of(SudokuCsvIO.rootPath+solvedGameName),
                     solvedSudoku.getGame());
 
-            return solvedSudoku;
+            return solvedSudoku.toString();
 
         }catch (IOException e){
             return null;
