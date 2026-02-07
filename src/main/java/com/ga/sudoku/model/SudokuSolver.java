@@ -3,12 +3,12 @@ package com.ga.sudoku.model;
 import java.util.ArrayList;
 
 public class SudokuSolver{
-    public static void main(String[] args) {
-        int[][] game = {{1,2,3},{0,3,1},{0,1,2}};
-        Sudoku sudoku = new Sudoku(solveSudoku(new Sudoku(game)).getGame());
-
-        System.out.println(sudoku.toString());
-    }
+//    public static void main(String[] args) {
+//        int[][] game = {{1,2,3},{0,3,1},{0,1,2}};
+//        Sudoku sudoku = new Sudoku(solveSudoku(new Sudoku(game)).getGame());
+//
+//        System.out.println(sudoku.toString());
+//    }
 
     public static Sudoku solveSudoku(Sudoku sudoku){
         Sudoku solvedSudoku = sudoku;

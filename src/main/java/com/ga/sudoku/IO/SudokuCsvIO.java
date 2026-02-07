@@ -6,7 +6,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class SudokuCsvIO {
-    public static String rootPath = "C:\\Users\\alial\\jdb\\projects\\sudoku_project\\sudoku\\games\\";
+//    public static String rootPath = "C:\\Users\\alial\\jdb\\projects\\sudoku_project\\sudoku\\games\\";
+    public static String projectPath = System.getProperty("user.dir");
+    public static String rootPath = projectPath + "\\games\\";
     public static int[][] readSquareGrid(Path csvPath)  throws IOException {
         java.util.List<int[]> rows = new java.util.ArrayList<>();
         Integer n = null;
@@ -116,10 +118,11 @@ public class SudokuCsvIO {
     }
 
     public static void main(String[] args) throws Exception {
-        Path in = Path.of((rootPath + "sudoku.csv"));
-        int[][] grid = readSquareGrid(in);
-        System.out.println(grid.length + ", " + grid[0].length);
-        grid[0][0] = 9;
-        saveSquareGrid(Path.of(rootPath + "sudokuUpdated.csv"), grid);
+//        Path in = Path.of((rootPath + "sudoku.csv"));
+//        int[][] grid = readSquareGrid(in);
+//        System.out.println(grid.length + ", " + grid[0].length);
+//        grid[0][0] = 9;
+//        saveSquareGrid(Path.of(rootPath + "sudokuUpdated.csv"), grid);
+//        System.out.println(rootPath);
     }
 }

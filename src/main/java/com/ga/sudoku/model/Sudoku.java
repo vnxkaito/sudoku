@@ -1,6 +1,7 @@
 package com.ga.sudoku.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ga.sudoku.exceptions.InvalidCharacterException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,7 @@ public class Sudoku {
         for(int i = 0; i < game.length; i++){
             if(game.length != game[i].length){
                 // raise exception (height should equal width)
+                throw new InvalidCharacterException("Height should equal width");
             }
             this.setSudokuCells(new ArrayList<>());
             for(int j = 0; j < game[i].length; j++){

@@ -1,0 +1,1 @@
+### You can find the postman collection in the project files.

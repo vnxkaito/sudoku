@@ -1,6 +1,7 @@
 package com.ga.sudoku.controller;
 
 import com.ga.sudoku.IO.SudokuCsvIO;
+import com.ga.sudoku.exceptions.SudokuFileNotFoundException;
 import com.ga.sudoku.model.Sudoku;
 import com.ga.sudoku.model.SudokuSolver;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +25,7 @@ public class SudokuSolverController {
             return new Sudoku(SudokuCsvIO.readSquareGrid(
                     Path.of(path)));
         }catch (IOException e){
-            return null;
-            // handle invalid game name
+            throw new SudokuFileNotFoundException("Sudoku file not found");
         }
     }
 
@@ -63,8 +63,7 @@ public class SudokuSolverController {
             return solvedSudoku.toString();
 
         }catch (IOException e){
-            return null;
-            // handle invalid game name
+            throw new SudokuFileNotFoundException("Sudoku file not found");
         }
 
     }
